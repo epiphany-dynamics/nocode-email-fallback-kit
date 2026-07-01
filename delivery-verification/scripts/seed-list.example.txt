@@ -1,0 +1,16 @@
+# Copy to seed-list.txt and fill in real addresses you control.
+# One address per line. Lines starting with # are ignored.
+#
+# Aim for coverage across at least these provider categories, since spam
+# filtering behavior differs significantly between them:
+
+# a Gmail / Google Workspace address
+# your-test@gmail.com
+
+# a Microsoft 365 / Outlook.com address (historically the strictest of the
+# major providers for unfamiliar sending infrastructure)
+# your-test@outlook.com
+
+# the actual business inbox provider, if different from the above
+# (GoDaddy-hosted email, a regional ISP, a self-hosted mail server, etc.)
+# your-test@business-domain-provider.com

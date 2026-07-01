@@ -1,0 +1,26 @@
+{
+  "name": "nocode-email-fallback-kit",
+  "version": "1.0.0",
+  "description": "Reference pattern: fix silent no-code/low-code form-notification email failures by intercepting submissions via webhook and sending through a dedicated transactional email provider (Resend), with real delivery verification.",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "node webhook-receiver/dev-server.js",
+    "test": "node --test webhook-receiver/test/*.test.js delivery-verification/webhook-listener/*.test.js",
+    "check-dns": "node delivery-verification/scripts/check-dns-auth.js",
+    "seed-test": "node delivery-verification/scripts/send-seed-test.js"
+  },
+  "keywords": [
+    "webhook",
+    "email",
+    "resend",
+    "deliverability",
+    "no-code",
+    "low-code",
+    "transactional-email",
+    "form-notifications"
+  ]
+}
