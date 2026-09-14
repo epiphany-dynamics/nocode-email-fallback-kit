@@ -102,6 +102,26 @@ generalizes well beyond email: the same "don't trust the platform's black
 box, intercept and verify" approach applies to SMS notifications, CRM syncs,
 and any other "the no-code tool says it did the thing" integration.
 
+## Tests
+
+`npm test` runs the unit suite for the webhook receiver and the delivery webhook listener:
+
+```bash
+npm test
+```
+
+Verified passing: 25 tests, 0 failures. They cover payload normalization across platform field-name aliases, rejection of missing or malformed emails, control character stripping and field length caps, HTML escaping, webhook secret enforcement, reply-to handling, and network failures surfacing as errors instead of unhandled throws.
+
+The DNS and seed scripts in `delivery-verification/` are checks you run against your own domain and mailboxes, not tests. They need real records and real inboxes to mean anything.
+
+## Known limits
+
+- The send path needs a Resend API key and a verified sending domain. Without domain verification, SPF and DKIM alignment is the client's problem all over again.
+- The pattern assumes the no-code platform can call a webhook on submit. Platforms without an outbound webhook step need a different route.
+- Delivery verification is only as good as its inputs: DNS checks read live records, and the seed test needs mailboxes on more than one provider to be worth running.
+- `check-dns` reads the domain you pass it; that domain has to be the one the email is actually sent from, not the marketing domain.
+- The local dev server exposes the same handler as production with no auth beyond the optional webhook secret.
+
 ## License
 
 MIT. See [`LICENSE`](./LICENSE).
